@@ -40,7 +40,7 @@ Diabetes is a major health issue, particularly among the Pima Indian population,
 - Explored variable distribution, correlation heatmaps, and class balance
 
 <p align="center">
-  <img src="This Mac/correlation_heatmap.png" alt="Correlation Heatmap" width="500"/>
+  <img src="recents/correlation_heatmap.png" alt="Correlation Heatmap" width="500"/>
 </p>
 
 ### 🧠 Machine Learning Models
