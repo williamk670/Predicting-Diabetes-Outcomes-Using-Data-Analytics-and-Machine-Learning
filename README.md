@@ -1,66 +1,114 @@
-# Predicting-Diabetes-Outcomes-Using-Data-Analytics-and-Machine-Learning
-Research project on predicting diabetes outcomes in the Pima Indian population using data analytics and machine learning models in R, including an interactive Shiny app.
+# 🩺 Predicting Diabetes Outcomes Using Data Analytics and Machine Learning
 
-# Predicting Diabetes Outcomes Using Data Analytics and Machine Learning
+![GitHub repo size](https://img.shields.io/github/repo-size/williamk670/diabetes-outcome-prediction)
+![Last Commit](https://img.shields.io/github/last-commit/williamk670/diabetes-outcome-prediction)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
-## Overview
+> 🔬 A research project using R and machine learning to predict diabetes in the Pima Indian population, featuring an interactive Shiny app.
 
-This research project explores the relationship between medical and demographic variables and their predictive power in diagnosing diabetes, focusing on the Pima Indian population. Using data analytics and various machine learning models in R, we identify the strongest predictors and evaluate model performance. An interactive Shiny app was developed for real-time diabetes prediction.
+---
 
-## Research Question
+## 📊 Project Overview
 
-**How do medical and demographic factors impact diabetes prediction, and which machine learning model provides the most accurate classification?**
+Diabetes is a major health issue, particularly among the Pima Indian population, who are genetically predisposed to the condition. This project uses data science and machine learning to identify key predictors of diabetes and develop a web-based prediction tool.
 
-## Dataset
+<p align="center">
+  <img src="images/overview_diagram.png" alt="Project overview diagram" width="600"/>
+</p>
+
+---
+
+## ❓ Research Question
+
+> **How do medical and demographic factors impact diabetes prediction, and which machine learning model provides the most accurate classification?**
+
+---
+
+## 📁 Dataset
 
 - **Source:** Pima Indians Diabetes Dataset  
-- **Origin:** National Institute of Diabetes and Digestive and Kidney Diseases (NIDDK) via Kaggle  
+- **Origin:** [Kaggle](https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database) via NIDDK  
 - **Samples:** 768  
-- **Variables:** 8 predictors + 1 target  
-- **Target Variable:** Diabetes diagnosis (1 = Diabetes, 0 = No Diabetes)
+- **Target Variable:** Diabetes diagnosis (`1 = Diabetes`, `0 = No Diabetes`)
 
-## Methods
+---
 
-- **Data Analysis & Visualization:** `ggplot2`, `corrplot`, `dplyr`
-- **Machine Learning Models:**  
-  - Logistic Regression  
-  - Random Forest  
-  - Neural Network  
-  - Naive Bayes  
-- **Interactive Tool:** Developed a Shiny app for real-time diabetes prediction
+## 🧪 Methods
 
-## Key Findings
+### 🔍 Data Analysis & Visualization
+- Tools: `ggplot2`, `corrplot`, `dplyr`
+- Explored variable distribution, correlation heatmaps, and class balance
 
-- **Top Predictors:** Glucose, BMI, Age
-- **Model Accuracy:**
-  - Logistic Regression: 77%
-  - Random Forest: 77%
-  - Naive Bayes: 76%
-  - Neural Network: 73%
-- Blood Pressure, Skin Thickness, and Insulin had weaker predictive power due to inconsistencies in the dataset.
+<p align="center">
+  <img src="images/correlation_heatmap.png" alt="Correlation Heatmap" width="500"/>
+</p>
 
-## Future Work
+### 🧠 Machine Learning Models
+- Logistic Regression
+- Random Forest
+- Neural Network
+- Naive Bayes
 
-- Refine data preprocessing and handling of missing values
-- Experiment with additional machine learning models
-- Enhance Shiny app usability and deployment
+### 💻 Shiny App
+> Developed an interactive prediction tool for real-time diabetes risk assessment.
 
-## Acknowledgements
+<p align="center">
+  <img src="images/shiny_app_screenshot.png" alt="Shiny App Screenshot" width="600"/>
+</p>
 
-This project was supported by:
-- Data Science, Analytics, and Visualization Program
-- Professor Mariah Yelenick  
+---
+
+## 📈 Key Results
+
+| Model              | Accuracy |
+|-------------------|----------|
+| Logistic Regression | 77%      |
+| Random Forest       | 77%      |
+| Naive Bayes         | 76%      |
+| Neural Network      | 73%      |
+
+### 🔑 Top Predictors
+- **Glucose**: Strongest predictor
+- **BMI & Age**: Also highly influential
+- Blood Pressure, Skin Thickness, and Insulin had weaker predictive power
+
+---
+
+## 🔮 Future Work
+
+- Improve preprocessing & missing value handling
+- Test additional machine learning models
+- Optimize and deploy Shiny app for public use
+
+---
+
+## 🙏 Acknowledgements
+
+Special thanks to:
+- Prof. Mariah Yelenick  
 - Dr. Amber Camp  
 - Dr. Rylan Chong  
+- Data Science, Analytics, and Visualization Program  
 
-Funded in part by NSF under grant numbers HRD-2217242 (INCLUDES Alliance ALL SPICE) and PEARL DUE-2030654 (S-STEM). The content is solely the responsibility of the authors and does not necessarily represent the official views of NSF.
+Funded by **NSF Grant Numbers**:  
+- HRD-2217242 (INCLUDES Alliance ALL SPICE)  
+- PEARL DUE-2030654 (S-STEM)
 
-## Reference
+> _The content is solely the responsibility of the authors and does not necessarily represent the official views of NSF._
+
+---
+
+## 📚 Reference
 
 World Health Organization. (2023). *Diabetes*. https://www.who.int/news-room/fact-sheets/detail/diabetes
 
-## Contact
+---
 
-- **Email:** wkim151416@gmail.com  
-- **Phone:** +1 (808) 206-1708  
-- **GitHub:** [williamk670](https://github.com/williamk670)
+## 📬 Contact
+
+**William Kim**  
+📧 wkim151416@gmail.com   
+🔗 [GitHub Profile](https://github.com/williamk670)
+
+---
+
