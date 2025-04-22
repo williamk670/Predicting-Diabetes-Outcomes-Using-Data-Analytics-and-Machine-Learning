@@ -1,0 +1,256 @@
+---
+title: "Pima Indian Women Diabetes"
+format: html
+editor: visual
+---
+
+## Introduction
+
+The data used in this project if available on Kaggle. The dataset has 9 columns and **768 rows** (500 non-diabetics and 268 diabetics). It is the Pima Indians Diabetes Dataset, originally sourced from the National Institute of Diabetes and Digestive and Kidney Diseases. It consists of medical predictors and one target variable, which indicates whether an individual has diabetes (1) or not (0). The medical predictors include information such as the number of pregnancies, plasma glucose concentration, diastolic blood pressure, triceps skinfold thickness, serum insulin levels, body mass index (BMI), diabetes pedigree function (providing a measure of genetic predisposition), and age.
+
+-   **Independent Variables (Predictors):**
+
+    -   Pregnancies
+
+    -   Glucose
+
+    -   Blood Pressure
+
+    -   Skin Thickness
+
+    -   Insulin
+
+    -   BMI
+
+    -   Diabetes Pedigree Function
+
+    -   Age
+
+-   **Dependent Variable (Target):** Outcome (1 = Diabetes, 0 = No Diabetes)
+
+### **Background**
+
+Diabetes is a growing health concern, particularly among Pima Indian women who are genetically predisposed to the condition. Understanding the factors that contribute to diabetes development can improve early diagnosis and prevention. This project aims to predict diabetes outcomes using data analytics and machine learning models.
+
+**Research Question:**\
+How do medical and demographic factors impact diabetes prediction, and which machine learning model offers the most accurate prediction?
+
+### **Methods and Tools**
+
+-   **Data Cleaning and Exploration:** Conducted using R with libraries such as `ggplot2`, `corrplot`, and `dplyr`.
+
+-   **Data Visualization:** Used correlation heatmaps, histograms, and barplots for insights.
+
+-   **Machine Learning Models:** Logistic Regression, Random Forest, Neural Network, and Naive Bayes.
+
+-   **Shiny App Development:** Built an interactive web app for real-time diabetes prediction.
+
+## Running Code
+
+```{r}
+#install.packages("GGally")
+library(GGally)
+library(ggplot2)
+library(corrplot)
+library(caret)
+library(dplyr)
+library(tidyr)
+library(shiny)
+library(caret)
+
+diabetes <- read.csv("diabetes.csv")
+
+str(diabetes)
+summary(diabetes)
+
+```
+
+```{r}
+#histogram
+ggplot(diabetes, aes(x = Glucose, fill = factor(Outcome))) +
+  geom_histogram(bins = 30, alpha = 0.6, position = "identity") +
+  labs(title = "Glucose Levels vs Diabetes Outcome", x = "Glucose", y = "Count") +
+  theme_minimal()
+
+#boxplot
+ggplot(diabetes, aes(x = factor(Outcome), y = BMI, fill = factor(Outcome))) +
+  geom_boxplot() +
+  labs(title = "BMI Distribution by Diabetes Outcome", x = "Outcome", y = "BMI") +
+  theme_minimal()
+
+```
+
+```{r}
+#computing correlation
+cor_matrix <- cor(diabetes[, sapply(diabetes, is.numeric)])
+
+#heatmap
+corrplot(cor_matrix, method = "color", col = colorRampPalette(c("red", "white", "blue"))(200),
+         title = "Correlation Matrix", addCoef.col = "black", number.cex = 0.7, tl.cex = 0.8)
+
+```
+
+```{r}
+#barplot for outcome
+ggplot(diabetes, aes(x = factor(Outcome))) +
+  geom_bar(fill = "skyblue") +
+  labs(title = "Distribution of Target Variable (Outcome)", x = "Outcome", y = "Count") +
+  theme_minimal()
+
+```
+
+```{r}
+#histograms 
+diabetes %>%
+  select(-Outcome) %>%
+  gather(key = "Variable", value = "Value") %>%
+  ggplot(aes(x = Value, fill = Variable)) +
+  geom_histogram(bins = 20, alpha = 0.7) +
+  facet_wrap(~Variable, scales = "free") +
+  labs(title = "Histograms of Features", x = "Value", y = "Frequency") +
+  theme_minimal()
+
+```
+
+```{r}
+#python results
+accuracy_scores <- data.frame(
+  Model = c("Logistic Regression", "Random Forest", "Neural Network", "Naive Bayes"),
+  Accuracy = c(0.77, 0.77, 0.73, 0.76)
+)
+
+#barplot
+ggplot(accuracy_scores, aes(x = Model, y = Accuracy, fill = Model)) +
+  geom_bar(stat = "identity") +
+  scale_fill_manual(values = c("blue", "green", "orange", "purple")) +
+  labs(title = "Accuracy Scores of Different Machine Learning Models", x = "Model", y = "Accuracy") +
+  theme_minimal()
+
+```
+
+**Results**
+
+1.  **Glucose Levels**
+
+    -   **Impact:** Glucose is one of the strongest predictors of diabetes. Elevated glucose levels are strongly associated with a higher risk of diabetes.
+
+    -   **Why:** Chronic high blood glucose indicates impaired insulin function, a hallmark of diabetes.
+
+2.  **BMI (Body Mass Index)**
+
+    -   **Impact:** Higher BMI values correlate with a greater likelihood of diabetes.
+
+    -   **Why:** Excess body fat is linked to insulin resistance, increasing the risk of developing Type 2 diabetes.
+
+3.  **Age**
+
+    -   **Impact:** Older individuals show a higher prevalence of diabetes.
+
+    -   **Why:** Aging is often associated with decreased insulin sensitivity and higher risk of metabolic conditions.
+
+4.  **Pregnancies**
+
+    -   **Impact:** Women with a higher number of pregnancies are more likely to develop diabetes.
+
+    -   **Why:** Pregnancy-related hormonal changes can contribute to gestational diabetes, increasing future risk.
+
+5.  **Blood Pressure**
+
+    -   **Impact:** Elevated blood pressure is modestly linked to diabetes.
+
+    -   **Why:** Hypertension is often part of the metabolic syndrome cluster, which increases diabetes risk.
+
+6.  **Skin Thickness and Insulin**
+
+    -   **Impact:** These features showed less predictive power in their raw form due to numerous zero values in the dataset.
+
+    -   **Why:** Missing or zero entries suggest data quality issues or non-standard measurement practices.
+
+7.  **Diabetes Pedigree Function**
+
+    -   **Impact:** Higher values in this measure are linked to an increased risk of diabetes.
+
+    -   **Why:** This factor reflects genetic predisposition, meaning individuals with a family history are at greater risk.
+
+-   **Model Accuracy Scores:**
+
+    -   Logistic Regression: 77%
+
+    -   Random Forest: 77%
+
+    -   Neural Network: 73%
+
+    -   Naive Bayes: 76%
+
+Logistic Regression and Random Forest performed best, likely due to their robustness with structured medical data.
+
+**Conclusion**
+
+This project demonstrates how data-driven approaches can effectively predict diabetes outcomes. The insights gained may help healthcare providers identify high-risk individuals early, enabling timely intervention.
+
+**Acknowledgment**
+
+I want to thank the Data Science, Analytics, and Visualization program, \<list of people\>, \<last person\> for supporting this project. This work was partially supported by the grant numbers HRD-2217242 (INCLUDES Alliance ALL SPICE) and PEARL DUE-2030654 (S-STEM). The content is solely the responsibility of the authors and does not necessarily represent the official views of NSF.
+
+```{r}
+#shiny app
+
+#dataset
+diabetes <- read.csv("diabetes.csv")
+
+#converting outcome to factor
+diabetes$Outcome <- as.factor(diabetes$Outcome)
+
+#trainning
+model <- train(Outcome ~ ., data = diabetes, method = "glm", family = "binomial")
+
+#UI
+ui <- fluidPage(
+  titlePanel("Diabetes Prediction"),
+  sidebarLayout(
+    sidebarPanel(
+      numericInput("pregnancies", "Number of Pregnancies", value = 1),
+      numericInput("glucose", "Glucose Level", value = 120),
+      numericInput("blood_pressure", "Diastolic Blood Pressure", value = 70),
+      numericInput("skin_thickness", "Triceps Skinfold Thickness", value = 20),
+      numericInput("insulin", "Serum Insulin Level", value = 80),
+      numericInput("bmi", "BMI", value = 30),
+      numericInput("pedigree", "Diabetes Pedigree Function", value = 0.5),
+      numericInput("age", "Age", value = 25),
+      actionButton("predict", "Predict")
+    ),
+    mainPanel(
+      textOutput("prediction")
+    )
+  )
+)
+
+#server
+server <- function(input, output) {
+  observeEvent(input$predict, {
+    # Create a data frame from user input
+    new_data <- data.frame(
+      Pregnancies = input$pregnancies,
+      Glucose = input$glucose,
+      BloodPressure = input$blood_pressure,
+      SkinThickness = input$skin_thickness,
+      Insulin = input$insulin,
+      BMI = input$bmi,
+      DiabetesPedigreeFunction = input$pedigree,
+      Age = input$age
+    )
+    
+    #making prediction
+    prediction <- predict(model, newdata = new_data, type = "prob")
+    outcome <- ifelse(prediction[, 2] > 0.5, "Diabetes", "No Diabetes")
+    
+    #output prediction
+    output$prediction <- renderText({
+      paste("Predicted Outcome:", outcome)
+    })
+  })
+}
+
+#running app
+shinyApp(ui = ui, server = server)
+```
