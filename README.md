@@ -1,8 +1,6 @@
 # 🩺 Predicting Diabetes Outcomes Using Data Analytics and Machine Learning
 
-![GitHub repo size](https://img.shields.io/github/repo-size/williamk670/diabetes-outcome-prediction)
-![Last Commit](https://img.shields.io/github/last-commit/williamk670/diabetes-outcome-prediction)
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
+
 
 > 🔬 A research project using R and machine learning to predict diabetes in the Pima Indian population, featuring an interactive Shiny app.
 
@@ -12,9 +10,7 @@
 
 Diabetes is a major health issue, particularly among the Pima Indian population, who are genetically predisposed to the condition. This project uses data science and machine learning to identify key predictors of diabetes and develop a web-based prediction tool.
 
-<p align="center">
-  <img src="images/overview_diagram.png" alt="Project overview diagram" width="600"/>
-</p>
+
 
 ---
 
@@ -39,9 +35,6 @@ Diabetes is a major health issue, particularly among the Pima Indian population,
 - Tools: `ggplot2`, `corrplot`, `dplyr`
 - Explored variable distribution, correlation heatmaps, and class balance
 
-<p align="center">
-  <img src="recents/correlation_heatmap.png" alt="Correlation Heatmap" width="500"/>
-</p>
 
 ### 🧠 Machine Learning Models
 - Logistic Regression
@@ -52,9 +45,7 @@ Diabetes is a major health issue, particularly among the Pima Indian population,
 ### 💻 Shiny App
 > Developed an interactive prediction tool for real-time diabetes risk assessment.
 
-<p align="center">
-  <img src="images/shiny_app_screenshot.png" alt="Shiny App Screenshot" width="600"/>
-</p>
+
 
 ---
 
